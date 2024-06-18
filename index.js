@@ -3,6 +3,7 @@ const { engine } = require("express-handlebars");
 
 const app = express();
 const conn = require("./db/conn");
+const Task = require('./models/Task')
 
 app.engine(
   "handlebars",
@@ -27,9 +28,6 @@ app.get('/', (req, res) => {
     res.send('Hello world.')
 })
 
-app.listen(3000, function(error){
-    if(error){
-        console.log(`Erro ao subir servidor: ${erro}`);
-    }
-    console.log(`Servidor rodando na porta 3000`);
-})
+conn.sync().then(()=> {
+    app.listen(3000)
+}).catch((err) => {console.log(err);})
