@@ -6,7 +6,7 @@ const conn = require("./db/conn");
 //model
 const Task = require('./models/Task')
 //routes
-const taskRoutes = require("./routes/taskRoutes");
+const taskRoutes = require("./routes/tasksRoutes");
 
 app.engine(
   "handlebars",
